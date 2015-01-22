@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Module Sample</title>
+
+<script src="https://rawgit.com/Matooy/codesnapjs/master/src/codesnap.js"></script>
+
+<script type="text/javascript" src="src/module.js"></script>
+
+<style>
+body{
+  background: #fefefe;
+  color: #333333;
+}
+h2{
+  margin-top: 24px;
+}
+.section{
+  overflow: hidden;
+  margin: 24px auto 48px;
+}
+pre{
+  font-size: 13px;
+  font-family: monospace;
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+#title{
+  font-family: Futura;
+  font-size: 120px;
+  text-align: center;
+  color: #556585;
+  margin: 48px auto 24px;
+}
+#container{
+  width: 72%;
+  min-width: 600px;
+  margin:0 auto;
+}
+
+.codesnap-title {
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+.codesnap-description {
+  margin-bottom: 24px;
+}
+.codesnap-code{
+  margin-bottom: 4em;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div id="container">
+  <h1 id="title">Module.js</h1>
+  <div id="contents"></div>
+</div>
+
+
+<script type="text/javascript">
+
+// Previewer
+;(function(){
+
+  (new CodeSnap({
+    wrapper: 'contents',
+    files: [
+      ['sample1', {
+        title: "Basic usage.",
+        description: "Module.extend( Constructor | Object ) will generate a new constructor."
+      }],
+      ['sample2', {
+        title: "Extend an object",
+        description: "Extend, extend, extend and more extend..."
+      }],
+      ['sample3', {
+        title: "Reverse chainging",
+        description: "__super__ contains a parent constructor.<br>In this sample, I overrided initialize() method and added chain() method to pass a value to the parent constructor."
+      }]
+    ]
+  })).load();
+
+})();
+
+</script>
+
+</body>
+</html>
