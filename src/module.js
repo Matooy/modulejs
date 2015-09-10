@@ -23,6 +23,7 @@
 })(this, function($){
   'use strict';
 
+
   /*
    * Eternal extendation.
    *
@@ -42,10 +43,14 @@
   //
   var Module = function(){
     // Append identifier.
-    this.identifier = "Module_" + (new Date).getTime();
+    Module.count++;
+    this.identifier = "Module_" + Module.count;
     (typeof this.initialize === 'function')
       && this.initialize.apply(this, arguments);
   };
+
+  Module.extend = dilator;
+  Module.count  = 0;
 
 
   // cp :: Objet -> a -> Nothing
@@ -89,7 +94,7 @@
     p = this;
 
     // Make a new Constructor.
-    var M = function(){
+    var SubModule = function(){
       return p.apply(this, arguments);
     };
 
@@ -100,10 +105,10 @@
 
     // Phase shifting,
     Stack.prototype  = p.prototype;
-    M.prototype = new Stack;
-    M.extend    = dilator;
+    SubModule.prototype = new Stack;
+    SubModule.extend    = dilator;
 
-    M.prototype.__super__ = p.prototype;
+    SubModule.prototype.__super__ = p.prototype;
 
     // Slice first argument.
     // And check it's construcable or not.
@@ -112,17 +117,15 @@
 
     // Do copy do.
     (function(x){
-      cp(M.prototype, x, 1);
+      cp(SubModule.prototype, x, 1);
     }).call(o,o);
 
     // More more more extensions!!
-    M = (args.length > 0) ? dilator.apply(M, args) : M;
+    SubModule = (args.length > 0) ? dilator.apply(SubModule, args) : SubModule;
 
-    return M;
+    return SubModule;
   }
 
-
-  Module.extend = dilator;
 
   return Module;
 });

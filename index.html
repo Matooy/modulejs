@@ -78,10 +78,18 @@ pre{
         description: "Extend, extend, extend and more extend..."
       }],
       ['sample3', {
-        title: "Reverse chainging",
+        title: "Reverse chaining",
         description: "__super__ contains a parent constructor.<br>In this sample, I overrided initialize() method and added chain() method to pass a value to the parent constructor."
       }]
-    ]
+    ],
+    events: {
+      indexed: function(wrapper, anchor, file){
+        var div = document.createElement('DIV');
+        anchor.innerHTML = file.title;
+        div.appendChild(anchor);
+        wrapper.appendChild(div);
+      }
+    }
   })).load();
 
 })();

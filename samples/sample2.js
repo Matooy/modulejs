@@ -21,9 +21,10 @@ var Mame = new Shiba({
   name: "MameShiba"
 });
 
+console.log("[sample2] Mame");
 console.log(Mame);
-console.log("Mame's leg count: ", Mame.leg);
-console.log("Mame's fur length: ", Mame.fur)
+console.log("[sample2] Mame's leg count: ", Mame.leg);
+console.log("[sample2] Mame's fur length: ", Mame.fur)
 
 
 var Bug = Living.extend({
@@ -52,7 +53,8 @@ console.log(Tom);
 var Trait_GreetWhenBorn = {
   // initialize() is an only availble hook for Module constructor.
   initialize: function(o){
-    console.log(this.identifier + ", " + this.name + " said '"+o+"'");
+    this.identifier = this.identifier + '-' + this.name;
+    console.log(this.identifier + " said '"+o+"'");
   }
 };
 

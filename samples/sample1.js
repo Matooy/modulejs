@@ -11,6 +11,6 @@ var r = new ex;
 // Change something.
 q.name = 4;
 
-console.log("Q: ", q);
-console.log("R: ", r);
+console.log("[sample1] Q: ", q);
+console.log("[sample1] R: ", r);
 
